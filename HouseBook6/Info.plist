@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key> Privacy - Tracking Usage Description</key>
+	<string>許可するとあなたの好みの広告が表示されやすくなります。</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-1650932357778717~5672755589</string>
 	<key>GADIsAdManagerApp</key>

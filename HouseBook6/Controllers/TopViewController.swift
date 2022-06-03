@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AppTrackingTransparency
 
 class TopViewController: UIViewController {
     
@@ -30,7 +31,25 @@ class TopViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("あああああああああああ\(SuperCategoryIcon.sortCostSuperCategoryName())")
+        //アラートのタイトル
+        let dialog = UIAlertController(title: "広告に関するご質問", message: "初回のみ広告に関してご確認いただきます。", preferredStyle: .alert)
+        //ボタンのタイトル
+        dialog.addAction(UIAlertAction(title: "次へ", style: .default, handler: {
+            (action: UIAlertAction!) in
+            
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { status in
+                switch status {
+                case .authorized:
+                    print("OK")
+                case .denied, .restricted, .notDetermined:
+                    print("だめでした。")
+                @unknown default:
+                    fatalError()
+                }
+            })
+        }))
+        //実際に表示させる
+        self.present(dialog, animated: true, completion: nil)
 
         // Do any additional setup after loading the view.
         goFirstLoginButtonSetUp()
